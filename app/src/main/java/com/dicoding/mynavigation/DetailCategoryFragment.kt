@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.dicoding.mynavigation.databinding.FragmentCategoryBinding
 import com.dicoding.mynavigation.databinding.FragmentDetailCategoryBinding
 
@@ -14,7 +16,7 @@ class DetailCategoryFragment : Fragment() {
     private val binding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+                              savedInstanceState: Bundle?): View {
         _binding = FragmentDetailCategoryBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -28,6 +30,10 @@ class DetailCategoryFragment : Fragment() {
 
         binding.tvCategoryName.text = dataName
         binding.tvCategoryDescription.text = "Stock : $dataDescription"
+
+        binding.btnHome.setOnClickListener (
+            Navigation.createNavigateOnClickListener(R.id.action_detailCategoryFragment_to_homeFragment)
+        )
     }
 
     override fun onDestroy() {

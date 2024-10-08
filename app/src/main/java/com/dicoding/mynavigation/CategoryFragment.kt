@@ -21,7 +21,7 @@ class CategoryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCategoryBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
@@ -30,10 +30,13 @@ class CategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val toDetailCategoryFragment = CategoryFragmentDirections.actionCategoryFragmentToDetailCategoryFragment()
-        toDetailCategoryFragment.name = "Lifestyle"
-        toDetailCategoryFragment.stock = 7
-        view.findNavController().navigate(toDetailCategoryFragment)
+        binding.btnCategoryLifestyle.setOnClickListener { view ->
+            val toDetailCategoryFragment =
+                CategoryFragmentDirections.actionCategoryFragmentToDetailCategoryFragment()
+            toDetailCategoryFragment.name = "Lifestyle"
+            toDetailCategoryFragment.stock = 7
+            view.findNavController().navigate(toDetailCategoryFragment)
+        }
     }
 
     override fun onDestroy() {
